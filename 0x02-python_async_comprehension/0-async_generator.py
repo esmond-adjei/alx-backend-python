@@ -2,6 +2,7 @@
 """
 async generator
 """
+
 import asyncio
 import random
 from typing import AsyncGenerator
@@ -11,7 +12,6 @@ async def async_generator() -> AsyncGenerator[float, None]:
     """
     loops 10 times during which it waits 1 seconnd and generates
     a random number between 0 and 10.
-
     :return: async generator of random float numbers
     """
 
