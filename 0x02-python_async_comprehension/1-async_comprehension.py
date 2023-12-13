@@ -1,4 +1,4 @@
-#!/usr/bin/env pythono3
+#!/usr/bin/env python3
 """
 Async Comprehensions
 """
