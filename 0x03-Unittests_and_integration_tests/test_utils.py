@@ -52,11 +52,7 @@ class TestMemoize(unittest.TestCase):
     Test memoize decorator
     """
     def test_memoize(self):
-        """
-        Using patch, verify that calling a_property twice
-        returns the correct result, while ensuring
-        that a_method is only called once
-        """
+        """Test memoize decorator by mocking a_class method"""
         class TestClass:
             def a_method(self):
                 return 42
@@ -65,12 +61,11 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 return self.a_method()
 
-        t = TestClass()
-        with patch.object(t, 'a_method', return_value=42) as mock_method:
-            result1 = t.a_property
-            result2 = t.a_property
-
-            mock_method.assert_called_once()
-
+        with patch.object(TestClass, "a_method",
+                          return_value=lambda: 42) as mock_method:
+            t = TestClass()
+            result1 = t.a_property()
+            result2 = t.a_property()
             self.assertEqual(result1, 42)
             self.assertEqual(result2, 42)
+            mock_method.assert_called_once()
