@@ -51,7 +51,7 @@ class TestMemoize(unittest.TestCase):
     """
     Test memoize decorator
     """
-    def test_memoize(self):
+    def test_memoize(self) -> None:
         """Test memoize decorator by mocking a_class method"""
         class TestClass:
             def a_method(self):
